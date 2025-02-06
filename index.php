@@ -14,3 +14,8 @@
     
 </body>
 </html>
+
+<!-- 
+  git config --global user.email "wellington.vsantos@gmail.com"
+  git config --global user.name "Wellington Vieira dos Santos"
+-->
