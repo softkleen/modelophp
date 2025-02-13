@@ -3,7 +3,10 @@
 include "conn/connect.php";
 
 // consulta para trazer os dados se filtar (destaques)
-
+$id = $_GET['id'];
+$detalhe = $conn->query("select * from vw_produtos where id = $id");
+$linha_detalhe = $detalhe->fetch_assoc();
+// $numLinhas = $linha_detalhe->num_rows;
 
 ?>
 
@@ -18,7 +21,7 @@ include "conn/connect.php";
     <title>Detalhes Produto</title>
 </head>
 <body class="fundofixo">
-    
+    <?php include 'menu_publico.php' ?>
     <div class="container">
         <h2 class="breadcrumb alert-danger">
             <a href="index.php">
@@ -30,25 +33,25 @@ include "conn/connect.php";
             </a>
         </h2>
         <div class="row">
-           
+           <?php do{ ?>
                 <div class="col-sm-12 col-md-12">
                     <div class="thumbnail ">
                         <a href="">
                             <img 
-                                src="images/" 
-                                alt="" 
+                                src="images/<?php echo $linha_detalhe['imagem'] ?>" 
+                                alt="<?php echo $linha_detalhe['descricao'] ?>" 
                                 class="img-responsive img-rounded" 
                                 style="height: 20em ;">
                         </a>
                         <div class="caption text-center">
                             <h3 class="text-danger">
-                                <strong></strong>
+                                <strong><?php echo $linha_detalhe['descricao'] ?></strong>
                             </h3>
                             <p class="text-warning">
-                                <strong></strong>
+                                <strong><?php echo $linha_detalhe['rotulo'] ?></strong>
                             </p>
                             <p class="text-center">
-                                <strong></strong>
+                                <strong><?php echo $linha_detalhe['resumo'] ?></strong>
                             </p>
                             <p>
                                 <a href="index.php" class="btn btn-danger" role="button">
@@ -59,7 +62,7 @@ include "conn/connect.php";
                         </div>
                     </div>
                 </div>    
-             
+            <?php }while($linha_detalhe = $detalhe->fetch_assoc()); ?> 
         </div>
     </div>
     

@@ -3,6 +3,7 @@ include "conn/connect.php";
 $lista_tipos = $conn->query("select * from tipos order by rotulo");
 $rows_tipos = $lista_tipos->fetch_all();
 
+
 ?>
 <!-- BOOTSTRAP -->
     <!-- abre a barra de navegação -->  
@@ -55,7 +56,7 @@ $rows_tipos = $lista_tipos->fetch_all();
                     id="form-busca" class="navbar-form navbar-left" role="search">
                         <div class="input-group">
                             <input type="search" name="buscar" id="buscar" size="9" class="form-control"
-                            aria-label="search" placeholder="Buscar produto" required>
+                            aria-label="search" placeholder="Buscar produto" minlength="3" required>
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                     <span class="glyphicon glyphicon-search"></span>
